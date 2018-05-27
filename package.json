@@ -1,0 +1,53 @@
+{
+  "name": "persona5-full-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV=production webpack -p",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baishusama/persona5-full-page.git"
+  },
+  "keywords": ["persona5"],
+  "author":
+    "baishusama <baishusama@outlook.com> (http://baishusama.github.io/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/baishusama/persona5-full-page/issues"
+  },
+  "homepage": "https://github.com/baishusama/persona5-full-page#readme",
+  "dependencies": {
+    "fullpage.js": "^2.9.7"
+  },
+  "devDependencies": {
+    "autoprefixer": "^8.5.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "cssnano": "^3.10.0",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "lost": "^8.2.1",
+    "mini-css-extract-plugin": "^0.4.0",
+    "node-sass": "^4.9.0",
+    "postcss-loader": "^2.1.5",
+    "postcss-preset-env": "^5.1.0",
+    "postcss-scss": "^1.0.5",
+    "postcss-sorting": "^3.1.0",
+    "resolve-url-loader": "^2.3.0",
+    "rucksack-css": "^1.0.2",
+    "sass-loader": "^7.0.1",
+    "style-loader": "^0.21.0",
+    "sugarss": "^1.0.1",
+    "webpack": "^4.9.1",
+    "webpack-cli": "^2.1.4",
+    "webpack-dev-server": "^3.1.4"
+  },
+  "browserslist": ["> 1%", "last 2 versions"]
+}
