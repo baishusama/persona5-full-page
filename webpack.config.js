@@ -28,8 +28,8 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   entry: {
-    app: './src/app.js',
-    print: './src/print.js'
+    app: './src/app.js'
+    // print: './src/print.js'
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
@@ -57,11 +57,26 @@ module.exports = {
   module: {
     rules: [
       {
+        test: require.resolve('jquery'),
+        use: [
+          {
+            loader: 'expose-loader',
+            options: 'jQuery'
+          },
+          {
+            loader: 'expose-loader',
+            options: '$'
+          }
+        ]
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/, // TODO: needed ???
-        use: {
-          loader: 'babel-loader'
-        }
+        use: [
+          {
+            loader: 'babel-loader'
+          }
+        ]
       },
       {
         test: /\.s?[ac]ss$/,
@@ -75,7 +90,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 1, // https://webpack.js.org/loaders/postcss-loader/#css-modules
+              importLoaders: 2, // https://webpack.js.org/loaders/postcss-loader/#css-modules
               modules: true
               /**
                * TODO: 为什么 localIdentName 不起作用？从结果来看 MiniCssExtractPlugin 的优先级更高！

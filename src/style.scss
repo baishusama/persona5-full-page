@@ -1,0 +1,110 @@
+/* https://stackoverflow.com/questions/35398733/css-modules-how-do-i-disable-local-scope-for-a-file */
+:global {
+  @import '~fullpage.js/dist/jquery.fullpage';
+}
+
+// TODO: WHY NOT working ???
+@font-face {
+  font-family: 'ProductSans';
+  src: url('./assets/fonts/product-sans/Product\ Sans\ Bold.ttf') format('ttf'),
+    url('./assets/fonts/product-sans/Product\ Sans\ Bold\ Italic.ttf')
+      format('ttf'),
+    url('./assets/fonts/product-sans/Product\ Sans\ Regular.ttf') format('ttf'),
+    url('./assets/fonts/product-sans/Product\ Sans\ Italic.ttf') format('ttf');
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* WHY not working with color($colors, primary) ???
+$colors: (
+  primary: #d6af5c,
+  secondary: #8fc45b,
+  normal: #8db4ff,
+  danger: #ff9996,
+  light: #f4f4f4,
+  dark: #33312e
+);
+*/
+$primary: #66ccc4; // #d6af5c;
+$primary-dark: #3ab8b5;
+$secondary: #db214c;
+$secondary-dark: #721d42;
+$plain: #fff;
+$dark: #121b1d;
+$bgclr: darkslategray;
+
+// tag 方式的仍能生效
+/*
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+*/
+
+// TODO: 除了通过手动在 js 中引入 style.section 外，应该还可以通过 postcss 在每一个引入
+// .section {
+// }
+
+/* Common styles
+* --------------------------------------- */
+:global {
+  img {
+    -webkit-transition: all 0.7s ease-out;
+    -moz-transition: all 0.7s ease-out;
+    -o-transition: all 0.7s ease-out;
+    transition: all 0.7s ease-out;
+  }
+  .section {
+    overflow: hidden;
+    background-color: $bgclr;
+    // background-position: center;
+    // background-size: cover;
+    color: $primary;
+    // font-family: 'ProductSans';
+    font-family: arial, helvetica;
+    font-size: 50px;
+    text-align: center;
+  }
+  .wrap {
+    width: 1180px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+  }
+  .box {
+    text-align: left;
+    color: $plain;
+    font-size: 1.2em;
+    line-height: 1.6em;
+  }
+}
+
+/* Overwriting fullPage.js tooltip color
+* --------------------------------------- */
+:global {
+  #fp-nav ul li .fp-tooltip {
+    color: $secondary;
+  }
+  #fp-nav,
+  .fp-slidesNav {
+    span {
+      border-color: $secondary;
+    }
+    .active span {
+      background: $secondary;
+    }
+    ul li a span {
+      background-color: $secondary-dark;
+    }
+  }
+}
+
+// className 方式的：不管 js 中是否引用，都会被转换（供模块化调用）
+.test {
+  background-size: cover;
+  color: #fff;
+  font-family: 'ProductSans';
+  font-size: 50px;
+}
